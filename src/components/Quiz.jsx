@@ -1,5 +1,5 @@
 import { Question } from "./Question";
-import { questions } from "../data/questions";
+import { questions } from "../questions";
 
 export function Quiz() {
   return (
