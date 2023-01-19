@@ -39,7 +39,6 @@ sayHi();`,
     choices: ["0 1 2 and 0 1 2", "0 1 2 and 3 3 3", "3 3 3 and 0 1 2"],
     answer: "3 3 3 and 0 1 2",
     explanation: `Because of the event queue in JavaScript, the "setTimeout" callback function is called after the loop has been executed. Since the variable "i" in the first loop was declared using the var keyword, this value was global. During the loop, we incremented the value of "i" by 1 each time, using the unary operator "++". By the time the setTimeout callback function was invoked, "i" was equal to 3 in the first example.
-
     In the second loop, the variable "i" was declared using the let keyword: variables declared with the let (and const) keyword are block-scoped (a block is anything between { }). During each iteration, "i" will have a new value, and each value is scoped inside the loop.`,
   },
   {
@@ -62,9 +61,7 @@ sayHi();`,
     ],
     answer: "20 and NaN",
     explanation: `Note that the value of "diameter" is a regular function, whereas the value of "perimete"r is an arrow function.
-
       With arrow functions, the "this" keyword refers to its current surrounding scope, unlike regular functions! This means that when we call "perimeter", it doesn't refer to the shape object, but to its surrounding scope (window for example).
-      
       There is no value "radius" on that object, which returns NaN.`,
   },
   {
@@ -74,7 +71,6 @@ sayHi();`,
     choices: ["1 and false", "false and NaN", "false and false"],
     answer: "1 and false",
     explanation: `The unary plus tries to convert an operand to a number. true is 1, and false is 0.
-
     The string 'Lydia' is a truthy value. What we're actually asking, is "is this truthy value falsy?". This returns false.`,
   },
   {
@@ -95,11 +91,8 @@ small: true,
     ],
     answer: "mouse.bird.size is not valid",
     explanation: `In JavaScript, all object keys are strings (unless it's a Symbol). Even though we might not type them as strings, they are always converted into strings under the hood.
-
     JavaScript interprets (or unboxes) statements. When we use bracket notation, it sees the first opening bracket [ and keeps going until it finds the closing bracket ]. Only then, it will evaluate the statement.
-    
     mouse[bird.size]: First it evaluates bird.size, which is "small". mouse["small"] returns true
-    
     However, with dot notation, this doesn't happen. mouse does not have a key called bird, which means that mouse.bird is undefined. Then, we ask for the size using dot notation: mouse.bird.size. Since mouse.bird is undefined, we're actually asking undefined.size. This isn't valid, and will throw an error similar to Cannot read property "size" of undefined.`,
   },
   {
@@ -112,9 +105,7 @@ small: true,
     console.log(d.greeting);`,
     choices: ["Hello", "Hey!", "undefined", "ReferenceError", "TypeError"],
     answer: "Hello",
-    explanation: `
-    In JavaScript, all objects interact by reference when setting them equal to each other.
-
+    explanation: `In JavaScript, all objects interact by reference when setting them equal to each other.
 First, variable c holds a value to an object. Later, we assign d with the same reference that c has to the object. When you change one object, you change all of them.`,
   },
   {
@@ -134,9 +125,7 @@ First, variable c holds a value to an object. Later, we assign d with the same r
     ],
     answer: "true false false",
     explanation: `new Number() is a built-in function constructor. Although it looks like a number, it's not really a number: it has a bunch of extra features and is an object.
-
     When we use the == operator, it only checks whether it has the same value. They both have the value of 3, so it returns true.
-    
     However, when we use the === operator, both value and type should be the same. It's not: new Number() is not a number, it's an object. Both return false.`,
   },
   {
@@ -166,7 +155,6 @@ First, variable c holds a value to an object. Later, we assign d with the same r
     choices: ["{}", "ReferenceError: greetign is not defined", "undefined"],
     answer: "{}",
     explanation: `It logs the object, because we just created an empty object on the global object! When we mistyped greeting as greetign, the JS interpreter actually saw this as global.greetign = {} (or window.greetign = {} in a browser).
-
     In order to avoid this, we can use "use strict". This makes sure that you have declared a variable before setting it equal to anything.`,
   },
   {
@@ -184,7 +172,6 @@ First, variable c holds a value to an object. Later, we assign d with the same r
     ],
     answer: "Nothing, this is totally fine!",
     explanation: `This is possible in JavaScript, because functions are objects! (Everything besides primitive types are objects)
-
     A function is a special type of object. The code you write yourself isn't the actual function. The function is an object with properties. This property is invocable.`,
   },
   {
@@ -208,7 +195,6 @@ First, variable c holds a value to an object. Later, we assign d with the same r
     ],
     answer: "TypeError",
     explanation: `In JavaScript, functions are objects, and therefore, the method getFullName gets added to the constructor function object itself. For that reason, we can call Person.getFullName(), but member.getFullName throws a TypeError.
-
     If you want a method to be available to all object instances, you have to add it to the prototype property`,
   },
   {
@@ -231,7 +217,6 @@ First, variable c holds a value to an object. Later, we assign d with the same r
     ],
     answer: 'Person {firstName: "Lydia", lastName: "Hallie"} and undefined',
     explanation: `For sarah, we didn't use the new keyword. When using new, this refers to the new empty object we create. However, if you don't add new, this refers to the global object!
-
     We said that this.firstName equals "Sarah" and this.lastName equals "Smith". What we actually did, is defining global.firstName = 'Sarah' and global.lastName = 'Smith'. sarah itself is left undefined, since we don't return a value from the Person function.`,
   },
   {
@@ -243,8 +228,7 @@ First, variable c holds a value to an object. Later, we assign d with the same r
     sum(1, '2');`,
     choices: ["NaN", "TypeError", '"12"', "3"],
     answer: '"12"',
-    explanation: `avaScript is a dynamically typed language: we don't specify what types certain variables are. Values can automatically be converted into another type without you knowing, which is called implicit type coercion. Coercion is converting from one type into another.
-
+    explanation: `JavaScript is a dynamically typed language: we don't specify what types certain variables are. Values can automatically be converted into another type without you knowing, which is called implicit type coercion. Coercion is converting from one type into another.
     In this example, JavaScript converts the number 1 into a string, in order for the function to make sense and return a value. During the addition of a numeric type (1) and a string type ('2'), the number is treated as a string. We can concatenate strings like "Hello" + "World", so what's happening here is "1" + "2" which returns "12".`,
   },
   {
@@ -256,12 +240,9 @@ First, variable c holds a value to an object. Later, we assign d with the same r
     choices: ["1 1 1", "1 2 2", "0 2 2", "0 1 2"],
     answer: "0 2 2",
     explanation: `The postfix unary operator ++:
-
     Returns the value (this returns 0)
     Increments the value (number is now 1)
-
 The prefix unary operator ++:
-
     Increments the value (number is now 2)
     Returns the value (this returns 2)
 
@@ -307,9 +288,7 @@ This returns 0 2 2.`,
     ],
     answer: "Hmm.. You don't have an age I guess",
     explanation: `When testing equality, primitives are compared by their value, while objects are compared by their reference. JavaScript checks if the objects have a reference to the same location in memory.
-
     The two objects that we are comparing don't have that: the object we passed as a parameter refers to a different location in memory than the object we used in order to check equality.
-    
     This is why both { age: 18 } === { age: 18 } and { age: 18 } == { age: 18 } return false.`,
   },
   {
@@ -354,7 +333,6 @@ This returns 0 2 2.`,
     ],
     answer: "When the user closes the tab.",
     explanation: `The data stored in sessionStorage is removed after closing the tab.
-
     If you used localStorage, the data would've been there forever, unless for example localStorage.clear() is invoked.`,
   },
   {
@@ -366,7 +344,6 @@ This returns 0 2 2.`,
     choices: ["8", "10", "SyntaxError", "ReferenceError"],
     answer: "10",
     explanation: `With the var keyword, you can declare multiple variables with the same name. The variable will then hold the latest value.
-
     You cannot do this with let or const since they're block-scoped.`,
   },
   {
@@ -386,7 +363,6 @@ This returns 0 2 2.`,
     ],
     answer: "true true false true",
     explanation: `All object keys (excluding Symbols) are strings under the hood, even if you don't type it yourself as a string. This is why obj.hasOwnProperty('1') also returns true.
-
     It doesn't work that way for a set. There is no '1' in our set: set.has('1') returns false. It has the numeric type 1, set.has(1) returns true.`,
   },
   {
@@ -443,9 +419,7 @@ This returns 0 2 2.`,
     choices: ["123", "456", "undefined", "ReferenceError"],
     answer: "456",
     explanation: `Object keys are automatically converted into strings. We are trying to set an object as a key to object a, with the value of 123.
-
     However, when we stringify an object, it becomes "[object Object]". So what we are saying here, is that a["[object Object]"] = 123. Then, we can try to do the same again. c is another object that we are implicitly stringifying. So then, a["[object Object]"] = 456.
-    
     Then, we log a[b], which is actually a["[object Object]"]. We just set that to 456, so it returns 456.`,
   },
   {
@@ -495,7 +469,6 @@ This returns 0 2 2.`,
     ],
     answer: "Lydia is 21 function",
     explanation: `With both, we can pass the object to which we want the this keyword to refer to. However, .call is also executed immediately!
-
     .bind. returns a copy of the function, but with a bound context! It is not executed immediately.`,
   },
   {
@@ -508,7 +481,6 @@ This returns 0 2 2.`,
     choices: ['"object"', '"number"', '"function"', '"undefined"'],
     answer: '"number"',
     explanation: `The sayHi function returns the returned value of the immediately invoked function expression (IIFE). This function returned 0, which is type "number".
-
     FYI: typeof can return the following list of values: undefined, boolean, number, bigint, string, symbol, function and object. Note that typeof null returns "object".`,
   },
   {
@@ -559,9 +531,7 @@ Function constructors, like new Number and new Boolean are truthy.`,
     ],
     answer: "[1, 2, 3, empty x 7, 11]",
     explanation: `When you set a value to an element in an array that exceeds the length of the array, JavaScript creates something called "empty slots". These actually have the value of undefined, but you will see something like:
-
     [1, 2, 3, empty x 7, 11]
-    
     depending on where you run it (it's different for every browser, node, etc.)`,
   },
   {
@@ -585,9 +555,7 @@ Function constructors, like new Number and new Boolean are truthy.`,
     ],
     answer: "1 undefined 2",
     explanation: `The catch block receives the argument x. This is not the same x as the variable when we pass arguments. This variable x is block-scoped.
-
     Later, we set this block-scoped variable equal to 1, and set the value of the variable y. Now, we log the block-scoped variable x, which is equal to 1.
-    
     Outside of the catch block, x is still undefined, and y is 2. When we want to console.log(x) outside of the catch block, it returns undefined, and y returns 2.`,
   },
   {
@@ -606,7 +574,6 @@ Function constructors, like new Number and new Boolean are truthy.`,
     ],
     answer: "[1, 2, 0, 1, 2, 3]",
     explanation: `[1, 2] is our initial value. This is the value we start with, and the value of the very first acc. During the first round, acc is [1,2], and cur is [0, 1]. We concatenate them, which results in [1, 2, 0, 1].
-
     Then, [1, 2, 0, 1] is acc and [2, 3] is cur. We concatenate them, and get [1, 2, 0, 1, 2, 3]`,
   },
   {
@@ -665,9 +632,7 @@ Function constructors, like new Number and new Boolean are truthy.`,
     choices: ["[0, 10], [10, 20]", "20, 20", "10, 20", "0, 10 and 10, 20"],
     answer: "10, 20",
     explanation: `Regular functions cannot be stopped mid-way after invocation. However, a generator function can be "stopped" midway, and later continue from where it stopped. Every time a generator function encounters a yield keyword, the function yields the value specified after it. Note that the generator function in that case doesn’t return the value, it yields the value.
-
     First, we initialize the generator function with i equal to 10. We invoke the generator function using the next() method. The first time we invoke the generator function, i is equal to 10. It encounters the first yield keyword: it yields the value of i. The generator is now "paused", and 10 gets logged.
-    
     Then, we invoke the function again with the next() method. It starts to continue where it stopped previously, still with i equal to 10. Now, it encounters the next yield keyword, and yields i * 2. i is equal to 10, so it returns 10 * 2, which is 20. This results in 10, 20.`,
   },
   {
@@ -724,9 +689,7 @@ Function constructors, like new Number and new Boolean are truthy.`,
     choices: ['"345"', '"75"', "12", '"12"'],
     answer: '"75"',
     explanation: `Operator associativity is the order in which the compiler evaluates the expressions, either left-to-right or right-to-left. This only happens if all operators have the same precedence. We only have one type of operator: +. For addition, the associativity is left-to-right.
-
     3 + 4 gets evaluated first. This results in the number 7.
-    
     7 + '5' results in "75" because of coercion. JavaScript converts the number 7 into a string. We can concatenate two strings using the +operator. "7" + "5" results in "75".`,
   },
   {
@@ -735,7 +698,6 @@ Function constructors, like new Number and new Boolean are truthy.`,
     choices: ["42", '"42"', "7", "NaN"],
     answer: "7",
     explanation: `Only the first numbers in the string is returned. Based on the radix (the second argument in order to specify what type of number we want to parse it to: base 10, hexadecimal, octal, binary, etc.), the parseInt checks whether the characters in the string are valid. Once it encounters a character that isn't a valid number in the radix, it stops parsing and ignores the following characters.
-
     * is not a valid number. It only parses "7" into the decimal 7. num now holds the value of 7.`,
   },
   {
@@ -752,7 +714,6 @@ Function constructors, like new Number and new Boolean are truthy.`,
     ],
     answer: "[undefined, undefined, undefined]",
     explanation: `When mapping over the array, the value of num is equal to the element it’s currently looping over. In this case, the elements are numbers, so the condition of the if statement typeof num === "number" returns true. The map function creates a new array and inserts the values returned from the function.
-
     However, we don’t return a value. When we don’t return a value from the function, the function returns undefined. For every element in the array, the function block gets called, so for each element we return undefined.`,
   },
   {
@@ -776,9 +737,7 @@ Function constructors, like new Number and new Boolean are truthy.`,
     ],
     answer: '{ name: "Lydia" }, "1997"',
     explanation: `Arguments are passed by value, unless their value is an object, then they're passed by reference. birthYear is passed by value, since it's a string, not an object. When we pass arguments by value, a copy of that value is created (see question 46).
-
     The variable birthYear has a reference to the value "1997". The argument year also has a reference to the value "1997", but it's not the same value as birthYear has a reference to. When we update the value of year by setting year equal to "1998", we are only updating the value of year. birthYear is still equal to "1997".
-    
     The value of person is an object. The argument member has a (copied) reference to the same object. When we modify a property of the object member has a reference to, the value of person will also be modified, since they both have a reference to the same object. person's name property is now equal to the value "Lydia"`,
   },
   {
@@ -805,7 +764,6 @@ Function constructors, like new Number and new Boolean are truthy.`,
     ],
     answer: "Oh no an error: Hello world!",
     explanation: `With the throw statement, we can create custom errors. With this statement, you can throw exceptions. An exception can be a string, a number, a boolean or an object. In this case, our exception is the string 'Hello world!'.
-
     With the catch statement, we can specify what to do if an exception is thrown in the try block. An exception is thrown: the string 'Hello world!'. e is now equal to that string, which we log. This results in 'Oh an error: Hello world!'.`,
   },
   {
@@ -819,7 +777,8 @@ Function constructors, like new Number and new Boolean are truthy.`,
     console.log(myCar.make);`,
     choices: ['"Lamborghini"', '"Maserati"', "ReferenceError", "TypeError"],
     answer: '"Maserati"',
-    explanation: `When you return a property, the value of the property is equal to the returned value, not the value set in the constructor function. We return the string "Maserati", so myCar.make is equal to "Maserati".`,
+    explanation: `When you return a property, the value of the property is equal to the returned value, not the value set in the constructor function. 
+    We return the string "Maserati", so myCar.make is equal to "Maserati".`,
   },
   {
     question: "What's the output?",
@@ -836,12 +795,7 @@ Function constructors, like new Number and new Boolean are truthy.`,
       '"number", "undefined"',
     ],
     answer: '"undefined", "number"',
-    explanation: `let x = (y = 10); is actually shorthand for: y = 10; let x = y; 
-    When we set y equal to 10, we actually add a property y to the global object (window in browser, global in Node). In a browser, window.y is now equal to 10.
-
-Then, we declare a variable x with the value of y, which is 10. Variables declared with the let keyword are block scoped, they are only defined within the block they're declared in; the immediately invoked function expression (IIFE) in this case. When we use the typeof operator, the operand x is not defined: we are trying to access x outside of the block it's declared in. This means that x is not defined. Values who haven't been assigned a value or declared are of type "undefined". console.log(typeof x) returns "undefined".
-
-However, we created a global variable y when setting y equal to 10. This value is accessible anywhere in our code. y is defined, and holds a value of type "number". console.log(typeof y) returns "number".
-    `,
+    explanation: `let x = (y = 10); is actually shorthand for: y = 10; let x = y;
+    When we set y equal to 10, we actually add a property y to the global object (window in browser, global in Node). In a browser, window.y is now equal to 10. Then, we declare a variable x with the value of y, which is 10. Variables declared with the let keyword are block scoped, they are only defined within the block they\'re declared in; the immediately invoked function expression (IIFE) in this case. When we use the typeof operator, the operand x is not defined: we are trying to access x outside of the block it\'s declared in. This means that x is not defined. Values who haven\'t been assigned a value or declared are of type "undefined". console.log(typeof x) returns "undefined". However, we created a global variable y when setting y equal to 10. This value is accessible anywhere in our code. y is defined, and holds a value of type "number". console.log(typeof y) returns "number".`,
   },
 ];
